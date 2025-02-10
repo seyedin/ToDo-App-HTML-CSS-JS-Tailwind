@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+/* مخفی کردن عناصر */
+.hidden {
+  display: none;
+}
+
+/* پس‌زمینه شیشه‌ای */
+.glass {
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* برای سازگاری با Safari */
+}
