@@ -17,7 +17,7 @@ A simple and elegant ToDo application built with HTML, CSS (Tailwind), and JavaS
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/seyedin/ToDo-App-HTML-CSS_Tailwind-JS-.git
+   git clone https://github.com/seyedin/ToDo-App-HTML-CSS_Tailwind-JS.git
 Navigate to the project directory:
 cd todo-application
 3. Open index.html in your preferred web browser. 
