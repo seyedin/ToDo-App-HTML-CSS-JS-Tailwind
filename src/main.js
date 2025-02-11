@@ -82,7 +82,7 @@ signup.addEventListener("submit", (e) => {
   }
 });
 
-// Requirement 1 & 9: User Login with Validation
+// User Login with Validation
 login.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -128,7 +128,7 @@ function checkAuthentication() {
   }
 }
 
-// ------------------------------ ToDo Application Functions ----------
+// ------------------------------ To Do Application Functions ----------
 
 // Add New Task with Validation
 taskForm.addEventListener("submit", addTask);
@@ -366,6 +366,3 @@ async function fetchUsers() {
 // ------------------------------ Initial Authentication Check ----------
 
 checkAuthentication();
-
-// Requirement 15: Send Project via Postman
-// For testing APIs with Postman, you can send requests to 'https://dummyjson.com/users' to fetch users.
