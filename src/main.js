@@ -1,16 +1,12 @@
-// app.js
+// ------------------------------ Initialization ----------
 
-// Requirement 16: Number requirements in the code
-
-// --- Initialization ---
-
-// Requirement 7: Data Persistence using Local Storage
+// Data Persistence using Local Storage
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
-// Simulate a simple user database (for educational purposes only)
+// Simulate a simple user database
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
-// --- DOM Elements ---
+// ------------------------------ DOM Elements ----------
 
 // Authentication Elements
 const signupForm = document.getElementById("signupForm");
@@ -42,7 +38,7 @@ const confirmModal = document.getElementById("confirmModal");
 const cancelButton = document.getElementById("cancelButton");
 const confirmButton = document.getElementById("confirmButton");
 
-// --- Event Listeners ---
+// ------------------------------ Event Listeners ----------
 
 // Toggle between signup and login forms
 showSignupLink.addEventListener("click", (e) => {
@@ -57,7 +53,7 @@ showLoginLink.addEventListener("click", (e) => {
   loginFormElement.classList.remove("hidden");
 });
 
-// Requirement 1 & 9: User Signup with Validation
+// User Signup with Validation
 signup.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -107,7 +103,7 @@ login.addEventListener("submit", (e) => {
   }
 });
 
-// Requirement 1 & 9: User Logout
+// User Logout
 logoutBtn.addEventListener("click", () => {
   localStorage.setItem("isAuthenticated", false);
   localStorage.removeItem("currentUser");
@@ -132,9 +128,9 @@ function checkAuthentication() {
   }
 }
 
-// --- ToDo Application Functions ---
+// ------------------------------ ToDo Application Functions ----------
 
-// Requirement 1 & 9: Add New Task with Validation
+// Add New Task with Validation
 taskForm.addEventListener("submit", addTask);
 
 function addTask(e) {
@@ -168,7 +164,7 @@ function addTask(e) {
   showMessage("Task added successfully!");
 }
 
-// Requirement 2 & 6: Render Tasks with Filter and Sorting
+// Render Tasks with Filter and Sorting
 filterSelect.addEventListener("change", renderTasks);
 
 function renderTasks() {
@@ -212,7 +208,7 @@ function renderTasks() {
     const taskActions = document.createElement("div");
     taskActions.className = "flex items-center space-x-2";
 
-    // Requirement 5: Mark Task as Completed
+    // Mark Task as Completed
     const toggleBtn = document.createElement("button");
     toggleBtn.textContent = task.completed ? "Undo" : "Complete";
     toggleBtn.className = `px-2 py-1 text-white rounded ${
@@ -220,13 +216,13 @@ function renderTasks() {
     }`;
     toggleBtn.addEventListener("click", () => toggleTask(task.id));
 
-    // Requirement 3: Edit Task
+    // Edit Task
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
     editBtn.className = "px-2 py-1 bg-blue-500 text-white rounded";
     editBtn.addEventListener("click", () => editTask(task.id));
 
-    // Requirement 4 & 10: Delete Task
+    // Delete Task
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.className = "px-2 py-1 bg-red-500 text-white rounded";
@@ -243,7 +239,7 @@ function renderTasks() {
   });
 }
 
-// Requirement 5: Toggle Task Completion Status
+// Toggle Task Completion Status
 function toggleTask(id) {
   tasks = tasks.map((task) => {
     if (task.id === id) {
@@ -256,7 +252,7 @@ function toggleTask(id) {
   showMessage("Task status updated!");
 }
 
-// Requirement 3: Edit Task
+// Edit Task
 function editTask(id) {
   const taskToEdit = tasks.find((task) => task.id === id);
 
@@ -271,7 +267,7 @@ function editTask(id) {
   showMessage("Edit the task and save changes.");
 }
 
-// Requirement 4 & 10: Delete Task
+// Delete Task
 function deleteTask(id) {
   tasks = tasks.filter((task) => task.id !== id);
   localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -279,7 +275,7 @@ function deleteTask(id) {
   showMessage("Task deleted!");
 }
 
-// Requirement 10: Delete All Tasks with Custom Modal
+// ------------------------------ Delete All Tasks with Custom Modal ----------
 
 // Remove previous event listener
 deleteAllTasksBtn.removeEventListener("click", deleteAllTasks);
@@ -312,7 +308,7 @@ confirmButton.addEventListener("click", () => {
   hideModal();
 });
 
-// Optional: Close modal when clicking outside of it
+// Close modal when clicking outside of it
 confirmModal.addEventListener("click", (e) => {
   if (e.target === confirmModal) {
     hideModal();
@@ -326,9 +322,9 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// --- Message Display Function ---
+// ------------------------------ Message Display Function ----------
 
-// Requirement 8: Show Messages to User
+// Show Messages to User
 function showMessage(text, type = "success") {
   message.textContent = text;
   message.className = `mt-4 text-center ${
@@ -336,12 +332,12 @@ function showMessage(text, type = "success") {
   }`;
   setTimeout(() => {
     message.textContent = "";
-  }, 4000);
+  }, 5000);
 }
 
-// --- Fetch and Display Users ---
+// ------------------------------ Fetch and Display Users ----------
 
-// Requirement 12 & 13: Fetch Data for 10 Users and Display in DOM
+// Fetch Data for 10 Users and Display in DOM
 async function fetchUsers() {
   try {
     const response = await fetch("https://dummyjson.com/users");
@@ -367,7 +363,7 @@ async function fetchUsers() {
   }
 }
 
-// --- Initial Authentication Check ---
+// ------------------------------ Initial Authentication Check ----------
 
 checkAuthentication();
 
